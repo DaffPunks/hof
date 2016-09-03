@@ -4,21 +4,50 @@
 
     <meta charset="utf-8">
     <title>Дом страха | Квесты в реальном времени | Прохождение квест комнат в реальности </title>
+
+    <link rel="apple-touch-icon" sizes="57x57" href="images/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="images/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="images/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="images/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="images/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="images/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="images/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="images/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="images/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="images/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+
     <link rel="stylesheet" type="text/css" href="{{asset('css/build/bootstrap.min.css')}}" />
     <link rel="stylesheet" type="text/css" href="{{asset('css/build/slick.css')}}" />
     <link rel="stylesheet" type="text/css" href="{{asset('css/build/slick-theme.css')}}" />
     <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}" />
     <link rel="stylesheet" type="text/css" href="{{asset('css/fonts.css')}}" />
 
+    <script type="text/javascript" src="{{asset('js/build/jquery.min.js')}}" defer></script>
+    <script type="text/javascript" src="{{asset('js/build/bootstrap.min.js')}}" defer></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js" defer></script>
+    <script type="text/javascript" src="{{asset('js/build/slick.min.js')}}" defer></script>
+    <script type="text/javascript" src="{{asset('js/build/carousel.js')}}" defer></script>
+    <script type="text/javascript" src="{{asset('js/build/jquery.maskedinput.min.js')}}" defer></script>
+    <script type="text/javascript" src="{{asset('js/build/masonry.pkgd.min.js')}}" defer></script>
+
+    <script type="text/javascript" src="{{asset('js/main.js')}}" defer></script>
 </head>
 <body>
 <header>
     <a href="/"><div class="logo"></div></a>
-    <a class="header__link header__about to_about">О нас</a>
-    <a class="header__link header__schedule to_shedule">Расписание</a>
-    <a class="header__link header__rules to_rules">Правила</a>
-    <a class="header__link header__feedback to_reviews">Отзывы</a>
-    <a class="header__link header__contact to_contacts">Контакты</a>
+    <a href="#about" class="header__link header__about to_about">О нас</a>
+    <a href="#shedule" class="header__link header__schedule to_shedule">Расписание</a>
+    <a href="#rules" class="header__link header__rules to_rules">Правила</a>
+    <a href="#reviews" class="header__link header__feedback to_reviews">Отзывы</a>
+    <a href="#contacts" class="header__link header__contact to_contacts">Контакты</a>
     <a class="header__number">51-08-44</a>
     <a class="header__adress to_map">г. Рязань, ул. Чкалова, д. 44</a>
 </header>
@@ -28,16 +57,11 @@
 
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
+            @foreach($imagestop as $image)
             <div class="item">
-                <img src="images/slider3.jpg" data-color="lightblue" alt="First Image">
+                <img src="{{asset('images/slider/top/'.$image->file_path)}}" data-color="lightblue" alt="First Image">
             </div>
-            <div class="item">
-                <img src="images/slider1.jpg" data-color="green" alt="First Image">
-            </div>
-            <div class="item">
-                <img src="images/slider2.jpg" data-color="firebrick" alt="Second Image">
-            </div>
-
+            @endforeach
         </div>
 
         <!-- Controls -->
@@ -61,7 +85,7 @@
         </div>
     </div>
 </main>
-<section class="about">
+<section id="about">
     <div class="container">
         <h2>Сильные стороны нашего квеста</h2>
         <div class="about_strong row">
@@ -139,12 +163,9 @@
             <p>И если бармен начнет охоту за Вами, у Вас будет только один шанс выйти живыми… Не упустите его.</p>
         </div>
         <div class="about_carousel">
-            <div><h3>1</h3></div>
-            <div><h3>2</h3></div>
-            <div><h3>3</h3></div>
-            <div><h3>4</h3></div>
-            <div><h3>5</h3></div>
-            <div><h3>6</h3></div>
+            @foreach($imagesmid as $item)
+            <div><h3><img src="{{asset('images/slider/mid/'.$item->file_path)}}" style="width: 100%;"></h3></div>
+            @endforeach
         </div>
         <div class="about_condition row">
             <div class="condition_text condition_left col-md-4">
@@ -165,127 +186,90 @@
         </div>
     </div>
 </section>
-<section class="shedule">
+<section id="shedule">
     <div class="container">
         <h2>Расписание</h2>
-        <h3>Возможность проведения игры в другое время уточняйте<a href=""> по телефону</a></h3>
+        <h3>Возможность проведения игры в другое время уточняйте<a href="tel:+74912510844"> по телефону</a></h3>
         <div class="container calendar">
+            @for ($i = 0; $i < 10; $i++)
             <div class="row calendar-item">
                 <div class="col-md-2 col-sm-3 col-xs-4 col-date">
                     <div class="calendar-date">
-                        <span class="day">28.08</span>
-                        <span class="day-name">Воскресенье</span>
+                        <span class="day">{{\Carbon\Carbon::today()->addDays($i)->format('d.m')}}</span>
+                        <span class="day-name">{{AppHelper::dayOfWeekend(\Carbon\Carbon::today()->addDays($i)->dayOfWeek)}}</span>
                     </div>
                 </div>
                 <div>
                     <div class="col-md-10 col-sm-9 col-xs-8 cal-scroll">
                         <div class="cal-hours">
-                            <a href="#" data-price="2500" data-id="12899" class="cal-hour buy_one_click_popup">
-                                10:00</a>
-                            <a href="#" data-price="2500" data-id="12900" class="cal-hour buy_one_click_popup">
-                                12:00</a>
-                            <a href="#" data-price="2500" data-id="12901" class="cal-hour buy_one_click_popup">
-                                14:00</a>
-                            <a href="#" data-price="2500" data-id="12902" class="cal-hour buy_one_click_popup">
-                                16:00</a>
-                            <a href="#" data-price="3000" data-id="12903" class="cal-hour buy_one_click_popup">
-                                18:00</a>
-                            <a href="#" data-price="3000" data-id="12904" class="cal-hour buy_one_click_popup">
-                                20:00</a>
-                            <a href="#" data-price="3000" data-id="12905" class="cal-hour buy_one_click_popup">
-                                20:00</a>
+                            @for($d = 0; $d < 7; $d++)
+                            <a href="#!"
+                               data-price="{{ $times[ AppHelper::counter($d,$i) ]->price }}"
+                               data-id="{{ $times[ AppHelper::counter($d,$i) ]->id }}"
+                               data-dayoftheweek="{{ AppHelper::dayOfWeekend( \Carbon\Carbon::today()->addDays($i)->dayOfWeek ) }}"
+                               data-time="{{ AppHelper::formatTime( $times[ AppHelper::counter($d,$i) ] ) }}"
+                               data-daymonth="{{ AppHelper::monthOfYear( $times[AppHelper::counter($d,$i)] ) }}"
+
+                               class="@if($times[AppHelper::counter($d,$i)]->is_reserved) reserved @else buy_one_click_popup @endif cal-hour">
+                                {{\Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $times[AppHelper::counter($d,$i)]->time)->format('H:i')}}
+                            </a>
+                            @endfor
                         </div>
                         <div class="price-blocks">
                             <div class="price-block price-amount-4">
-                                2500 руб
+                                {{$price[0]->value}} руб
                             </div>
                             <div class="price-block price-amount-3">
-                                3000 руб
+                                {{$price[1]->value}} руб
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row calendar-item">
+            @endfor
+            @for ($i = 10; $i < 20; $i++)
+            <div class="row calendar-item" style="display: none;">
                 <div class="col-md-2 col-sm-3 col-xs-4 col-date">
                     <div class="calendar-date">
-                        <span class="day">29.08</span>
-                        <span class="day-name">Понедельник</span>
+                        <span class="day">{{\Carbon\Carbon::today()->addDays($i)->format('d.m')}}</span>
+                        <span class="day-name">{{AppHelper::dayOfWeekend(\Carbon\Carbon::today()->addDays($i)->dayOfWeek)}}</span>
                     </div>
                 </div>
                 <div>
                     <div class="col-md-10 col-sm-9 col-xs-8 cal-scroll">
                         <div class="cal-hours">
-                            <a href="#" data-price="2500" data-id="12899" class="cal-hour buy_one_click_popup">
-                                10:00</a>
-                            <a href="#" data-price="2500" data-id="12900" class="cal-hour buy_one_click_popup">
-                                12:00</a>
-                            <a href="#" data-price="2500" data-id="12901" class="cal-hour buy_one_click_popup">
-                                14:00</a>
-                            <a href="#" data-price="2500" data-id="12902" class="cal-hour buy_one_click_popup">
-                                16:00</a>
-                            <a href="#" data-price="3000" data-id="12903" class="cal-hour buy_one_click_popup">
-                                18:00</a>
-                            <a href="#" data-price="3000" data-id="12904" class="cal-hour buy_one_click_popup">
-                                20:00</a>
-                            <a href="#" data-price="3000" data-id="12905" class="cal-hour buy_one_click_popup">
-                                20:00</a>
+                            @for($d = 0; $d < 7; $d++)
+                                <a href="#!"
+                                   data-price="{{ $times[ AppHelper::counter($d,$i) ]->price }}"
+                                   data-id="{{ $times[ AppHelper::counter($d,$i) ]->id }}"
+                                   data-dayoftheweek="{{ AppHelper::dayOfWeekend( \Carbon\Carbon::today()->addDays($i)->dayOfWeek ) }}"
+                                   data-time="{{ AppHelper::formatTime( $times[ AppHelper::counter($d,$i) ] ) }}"
+                                   data-daymonth="{{ AppHelper::monthOfYear( $times[AppHelper::counter($d,$i)] ) }}"
+                                   class="@if($times[AppHelper::counter($d,$i)]->is_reserved) reserved @else buy_one_click_popup @endif cal-hour">
+                                    {{\Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $times[AppHelper::counter($d,$i)]->time)->format('H:i')}}
+                                </a>
+                            @endfor
                         </div>
                         <div class="price-blocks">
                             <div class="price-block price-amount-4">
-                                2500 руб
+                                {{$price[0]->value}} руб
                             </div>
                             <div class="price-block price-amount-3">
-                                3000 руб
+                                {{$price[1]->value}} руб
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row calendar-item">
-                <div class="col-md-2 col-sm-3 col-xs-4 col-date">
-                    <div class="calendar-date">
-                        <span class="day">30.08</span>
-                        <span class="day-name">Вторник</span>
-                    </div>
-                </div>
-                <div>
-                    <div class="col-md-10 col-sm-9 col-xs-8 cal-scroll">
-                        <div class="cal-hours">
-                            <a href="#" data-price="2500" data-id="12899" class="cal-hour buy_one_click_popup">
-                                10:00</a>
-                            <a href="#" data-price="2500" data-id="12900" class="cal-hour buy_one_click_popup">
-                                12:00</a>
-                            <a href="#" data-price="2500" data-id="12901" class="cal-hour buy_one_click_popup">
-                                14:00</a>
-                            <a href="#" data-price="2500" data-id="12902" class="cal-hour buy_one_click_popup">
-                                16:00</a>
-                            <a href="#" data-price="3000" data-id="12903" class="cal-hour buy_one_click_popup">
-                                18:00</a>
-                            <a href="#" data-price="3000" data-id="12904" class="cal-hour buy_one_click_popup">
-                                20:00</a>
-                            <a href="#" data-price="3000" data-id="12905" class="cal-hour buy_one_click_popup">
-                                20:00</a>
-                        </div>
-                        <div class="price-blocks">
-                            <div class="price-block price-amount-4">
-                                2500 руб
-                            </div>
-                            <div class="price-block price-amount-3">
-                                3000 руб
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+             </div>
+            @endfor
         </div>
-        <div class="default_button more_test">
+        <div class="default_button more_shedule">
             <button>Показать ещё</button>
         </div>
 
     </div>
 </section>
-<section class="rules">
+<section id="rules">
     <div class="container">
         <h2>Правила игры</h2>
         <div class="row">
@@ -302,7 +286,7 @@
                     <img src="images/action.png">
                 </div>
                 <div class="strong_text">
-                    Применять грубую физическую силу к актерам
+                    Запрещено рименять грубую физическую силу к актерам
                 </div>
             </div>
             <div class="col-md-4 strong_item">
@@ -310,123 +294,36 @@
                     <img src="images/lightning.png">
                 </div>
                 <div class="strong_text">
-                    Пытаться открыть и проникнуть в месте, обозначенные этим знаком
+                    Запрещено пытаться открыть и проникнуть в места, обозначенные этим знаком
                 </div>
             </div>
         </div>
     </div>
 </section>
-<section class="reviews">
+<section id="reviews">
     <div class="container">
         <h2>Отзывы</h2>
         <div class="grid">
             <div class="grid-sizer grid-sizer-3"></div>
+            @foreach($vkmsg as $vk)
             <div class="grid-item grid-item-3">
                 <div class="review-wrap">
                     <div class="review-wrap2">
-                        <div class="review_circle"></div>
+                        <a @if(array_key_exists('screen_name', $vkprofiles[AppHelper::findProfileIndex($vk['from_id'], $vkprofiles)]))href="https://vk.com/{{$vkprofiles[AppHelper::findProfileIndex($vk['from_id'], $vkprofiles)]['screen_name']}}"@endif class="review_circle">
+                            <img src="{{$vkprofiles[AppHelper::findProfileIndex($vk['from_id'], $vkprofiles)]['photo_100']}}" style="border-radius: 100%">
+                        </a>
                         <div class="review_name">
-                            Сергей
+                            {{ $vkprofiles[AppHelper::findProfileIndex($vk['from_id'], $vkprofiles)]['first_name'] }}
                         </div>
                         <div class="review_text">
-                            Ходите только с умными друзьями!)
+                            {!!$vk['text']!!}
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="grid-item grid-item-3">
-                <div class="review-wrap">
-                    <div class="review-wrap2">
-                        <div class="review_circle"></div>
-                        <div class="review_name">
-                            Иван
-                        </div>
-                        <div class="review_text">
-                            Проходили квест по совету друзей, 1й раз на перформансе такого рода... Хочу сказать эмоции постепенно нагнетались по ходу игры, было немного страшно, девочки пару раз закричали. Далее были задачи на логику, командные задания так же тщательно продуманные. Все отлично вяжется с сюжетом. Вообщем это топовый квест! Советую компании от 2-3 человек с интеллектом не ниже среднего
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="grid-item grid-item-3">
-                <div class="review-wrap">
-                    <div class="review-wrap2">
-                        <div class="review_circle"></div>
-                        <div class="review_name">
-                            Маша
-                        </div>
-                        <div class="review_text">
-                            Первый раз побывали на квесте, очень понравилось! Задания интересные, атмосфера таинственная и элементы хоррора, конечно, присутствуют. Актёр классный, с чувством юмора) Рекомендую, не пожалеете!
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="grid-item grid-item-3">
-                <div class="review-wrap">
-                    <div class="review-wrap2">
-                        <div class="review_circle"></div>
-                        <div class="review_name">
-                            Сергей
-                        </div>
-                        <div class="review_text">
-                            Ходите только с умными друзьями!)
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="grid-item grid-item-3">
-                <div class="review-wrap">
-                    <div class="review-wrap2">
-                        <div class="review_circle"></div>
-                        <div class="review_name">
-                            Иван
-                        </div>
-                        <div class="review_text">
-                            Проходили квест по совету друзей, 1й раз на перформансе такого рода... Хочу сказать эмоции постепенно нагнетались по ходу игры, было немного страшно, девочки пару раз закричали. Далее были задачи на логику, командные задания так же тщательно продуманные. Все отлично вяжется с сюжетом. Вообщем это топовый квест! Советую компании от 2-3 человек с интеллектом не ниже среднего
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="grid-item grid-item-3">
-                <div class="review-wrap">
-                    <div class="review-wrap2">
-                        <div class="review_circle"></div>
-                        <div class="review_name">
-                            Маша
-                        </div>
-                        <div class="review_text">
-                            Первый раз побывали на квесте, очень понравилось! Задания интересные, атмосфера таинственная и элементы хоррора, конечно, присутствуют. Актёр классный, с чувством юмора) Рекомендую, не пожалеете!
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="grid-item grid-item-3">
-                <div class="review-wrap">
-                    <div class="review-wrap2">
-                        <div class="review_circle"></div>
-                        <div class="review_name">
-                            Маша
-                        </div>
-                        <div class="review_text">
-                            Первый раз побывали на квесте, очень понравилось! Задания интересные, атмосфера таинственная и элементы хоррора, конечно, присутствуют. Актёр классный, с чувством юмора) Рекомендую, не пожалеете!
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="grid-item grid-item-3">
-                <div class="review-wrap">
-                    <div class="review-wrap2">
-                        <div class="review_circle"></div>
-                        <div class="review_name">
-                            Маша
-                        </div>
-                        <div class="review_text">
-                            Первый раз побывали на квесте, очень понравилось! Задания интересные, атмосфера таинственная и элементы хоррора, конечно, присутствуют. Актёр классный, с чувством юмора) Рекомендую, не пожалеете!
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
-        <div class="default_button more_test">
+        <div class="default_button more_reviews">
             <button>Показать ещё</button>
         </div>
         <div class="doyoulike">
@@ -440,7 +337,7 @@
         </div>
     </div>
 </section>
-<section class="contacts">
+<section id="contacts">
     <div class="container">
         <h2>Контакты</h2>
         <div class="row">
@@ -468,10 +365,10 @@
             </div>
             <div class="col-md-7 rating">
                 <div class="row">
-                    <a class="left_image col-md-8 col-xs-12" href="">
+                    <a class="left_image col-md-8 col-xs-12" href="http://mir-kvestov.ru/">
                         <img src="images/mirquest.png">
                     </a>
-                    <a class="right_image col-md-4 col-xs-12" href="">
+                    <a class="right_image col-md-4 col-xs-12" href="http://mir-kvestov.ru/">
                         <img src="images/guildquest.png">
                     </a>
                 </div>
@@ -484,8 +381,8 @@
         </div>
     </div>
 </section>
-<div class="yandexmap">
-    <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?sid=OPNdKqqGSPwrehsB5rag6qjL1qxqESf2&amp;width=100%&amp;height=600&amp;lang=ru_RU&amp;sourceType=constructor&amp;scroll=true"></script>
+<div id="yandexmap">
+    <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?sid=X5xFhBWAuH1STkfaQvXUF2fzghgb-lrm&amp;width=100%&amp;height=500&amp;lang=ru_RU&amp;sourceType=constructor&amp;scroll=true"></script>
 </div>
 <footer>
     <div class="container footer">
@@ -533,14 +430,14 @@
                 <div class="row footer_rating" style="display: flex;">
                     <div class="col-md-8">
                         <div class="footer-description">
-                            <a href="http://mir-kvestov.ru/quests/1378" target="_blank">
+                            <a href="http://mir-kvestov.ru/" target="_blank">
                                 <img src="images/mirquest.png" height="100" alt="Отзывы на Квест в реальности Биошок (Quest Moscow)" title="Отзывы на Квест в реальности Биошок (Quest Moscow)">
                             </a>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="footer-description">
-                            <a href="http://mir-kvestov.ru/quests/1378" target="_blank">
+                            <a href="http://mir-kvestov.ru/" target="_blank">
                                 <img src="images/guildquest.png" height="100" alt="Отзывы на Квест в реальности Биошок (Quest Moscow)" title="Отзывы на Квест в реальности Биошок (Quest Moscow)">
                             </a>
                         </div>
@@ -584,51 +481,36 @@
                         </span>
             </p>
             <div class="details_close">X</div>
-            <form action="" class="buy_one_click_form" method="post" id="buy_one_click_form" enctype="multipart/form-data">
-                <input type="hidden" name="PRICE" value="3500.00">
-                <input type="hidden" name="DATE" value="25 Августа">
-                <input type="hidden" name="TIME" value="16:00">
-                <input type="hidden" name="QUEST" value="BIOSHOCK">
-                <input type="hidden" name="TYPE" value="Сеанс">
-                <input type="hidden" name="IDsZ" value="231">
+            <form action="reserve" class="buy_one_click_form" method="post" id="buy_one_click_form" enctype="multipart/form-data">
+                {{ csrf_field() }}
+                <input type="hidden" name="ID" value="231">
 
-                <input placeholder="Имя *" onblur="javascript:document.getElementById('FIO').value = this.value;" type="text" name="ONECLICK_PROP[1]" value="" id="individual1">
+                <input placeholder="Имя*" required type="text" name="FIRSTNAME" value="" id="firstinput">
 
-                <input type="hidden" id="FirstName" name="FIO" value="">
-                <input placeholder="Фамилия" onblur="javascript:document.getElementById('EMAIL').value = this.value;" type="text" name="ONECLICK_PROP[2]" value="" id="individual2">
+                <input placeholder="Фамилия" type="text" name="SECONDNAME" value="" id="secondinput">
 
-                <input type="hidden" id="SecondName" name="FIO" value="">
-                <input placeholder="Телефон *" onblur="javascript:document.getElementById('PHONE').value = this.value;" type="text" name="ONECLICK_PROP[3]" value="" id="individual3">
+                <input placeholder="Телефон*" required type="text" name="PHONE" value="" id="phoneinput">
 
-                <input type="hidden" id="PHONE" name="PHONE" value="">
-                <input placeholder="E-Mail" onblur="javascript:document.getElementById('EMAIL').value = this.value;" type="text" name="ONECLICK_PROP[2]" value="" id="individual2">
+                <input placeholder="E-Mail" type="email" name="EMAIL" value="" id="emailinput">
 
-                <input type="hidden" id="EMAIL" name="EMAIL" value="">
-
-                <input placeholder="Дата" type="hidden" name="ONECLICK_PROP[10]" value="25 Августа" id="individual10">
-
-
-                <input type="hidden" name="DELIVERY" value="">
-                <button class="button-send" id="h2o_preorder_button_submit">Купить</button>
-
-
-
-
+                <input type="submit" value="Купить" class="button-send" id="h2o_preorder_button_submit"/>
             </form>
         </div>
     </div>
 </div>
 
+@if( Session::has('success') || Session::has('fail') )
+<div class="popup-notification">
+    <div>
+        {{Session::get('success')}}
+        {{Session::get('fail')}}
+    </div>
+</div>
+@endif
 
 
 <!-- Scripts -->
-<script type="text/javascript" src="{{asset('js/build/jquery.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('js/build/bootstrap.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('js/build/slick.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('js/carousel.js')}}"></script>
-<script type="text/javascript" src="{{asset('js/build/masonry.pkgd.min.js')}}"></script>
 
-<script type="text/javascript" src="{{asset('js/main.js')}}"></script>
 
 
 </body>

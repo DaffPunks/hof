@@ -21,6 +21,7 @@ $('.about_carousel').slick({
     infinite: true,
     slidesToShow: 3,
     slidesToScroll: 1,
+    adaptiveHeight: true,
     responsive: [
         {
             breakpoint: 1024,
@@ -51,32 +52,32 @@ $('.about_carousel').slick({
 
 $(".to_about").click(function() {
     $('html,body').animate({
-            scrollTop: $(".about").offset().top},
+            scrollTop: $("#about").offset().top},
         'slow');
 });
 $(".to_shedule").click(function() {
     $('html,body').animate({
-            scrollTop: $(".shedule").offset().top},
+            scrollTop: $("#shedule").offset().top},
         'slow');
 });
 $(".to_rules").click(function() {
     $('html,body').animate({
-            scrollTop: $(".rules").offset().top},
+            scrollTop: $("#rules").offset().top},
         'slow');
 });
 $(".to_reviews").click(function() {
     $('html,body').animate({
-            scrollTop: $(".reviews").offset().top},
+            scrollTop: $("#reviews").offset().top},
         'slow');
 });
 $(".to_contacts").click(function() {
     $('html,body').animate({
-            scrollTop: $(".contacts").offset().top},
+            scrollTop: $("#contacts").offset().top},
         'slow');
 });
 $(".to_map").click(function() {
     $('html,body').animate({
-            scrollTop: $(".yandexmap").offset().top},
+            scrollTop: $("#yandexmap").offset().top},
         'slow');
 });
 $(".to_top").click(function() {
@@ -87,6 +88,10 @@ $(".to_top").click(function() {
 
 $(".buy_one_click_popup").click(function() {
     $('.details_price .price_price').text($(this).data('price')+".00");
+    $('.details_day').text($(this).data('dayoftheweek'));
+    $('.date_day').text($(this).data('daymonth'));
+    $('.date_time').text($(this).data('time'));
+    $('input[name=ID]').val($(this).data('id'));
     $('.order').fadeIn('fast');
     return false;
 });
@@ -146,5 +151,15 @@ $(document).keyup(function(e) {
     if (e.keyCode === 27) $('.details_close').click();   // esc
 });
 
+$('#phoneinput').mask("9(999)999-99-99");
+
+$('.more_shedule').click(function () {
+    $('.calendar-item').show();
+    $('.more_shedule').hide();
+});
+
+setTimeout(function () {
+    $('.popup-notification').hide('fast','swing');
+}, 6000);
 
 

@@ -193,8 +193,9 @@ header{
   color: #e57373;
 }
 
-.about{
+#about{
   background-color: #171b1f;
+  padding-bottom: 50px;
 }
 .strong_text{
   line-height: 20px;
@@ -254,7 +255,7 @@ header{
   text-align: center;
 }
 .default_button button{
-  margin: 50px 0;
+  margin-top: 50px;
   padding: 20px 30px;
   font-size: 14px;
   font-family: "GothamProRegular";
@@ -266,8 +267,9 @@ header{
 
 }
 
-.shedule{
+#shedule{
   background-color: #111619;
+  padding-bottom: 50px;
 }
 .calendar{
 
@@ -380,10 +382,10 @@ header{
   font-size: 20px;
 }
 
-.rules{
+#rules{
   background-color: #171b1f;
 }
-.reviews{
+#reviews{
   background-color: #111619;
 }
 .review-wrap{
@@ -396,10 +398,8 @@ header{
 }
 .review_circle{
   margin: auto;
-  width: 150px;
-  height: 150px;
-  border: dashed #FFF;
-  border-radius: 100%;
+  display: flex;
+  justify-content: center;
 }
 .review_name{
   font-size: 20px;
@@ -499,7 +499,6 @@ header{
 }
 input{
   margin-bottom: 5px;
-  line-height: 18;
   color: #ffffff;
   width: 204px;
   height: 42px;
@@ -532,6 +531,7 @@ form{
   margin-top: 10px;
 }
 .button-send {
+  line-height: 0;
   width: 170px;
   margin: 15px auto 0 auto;
   background-color: #4680f6;
@@ -546,10 +546,12 @@ form{
   outline: 0;
 }
 
-.contacts{
+#contacts{
   background-color: #10181c;
 }
-
+.more_reviews{
+  padding-bottom: 50px;
+}
 .doyoulike{
   border-radius: 10px;
   margin-bottom: 50px;
@@ -740,4 +742,28 @@ footer{
   .reports .report, .brackets img{
     margin-left: 10px;
   }
+}
+.reserved{
+  background-color: #15191d;
+}
+.reserved:hover{
+  cursor: not-allowed;
+  background-color: #15191d;
+}
+
+.popup-notification{
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 80%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.popup-notification div{
+  background-color: rgba(0,0,0,0.9);
+  border-radius: 5px;
+  padding: 20px;
+
 }
